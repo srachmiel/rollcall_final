@@ -37,7 +37,7 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to students_url, notice: "Student updated successfully."
     else
-      render 'new'
+      render 'edit'
     end
   end
 

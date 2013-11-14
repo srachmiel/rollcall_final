@@ -35,7 +35,7 @@ class AttendancesController < ApplicationController
     if @attendance.save
       redirect_to attendances_url, notice: "Attendance updated successfully."
     else
-      render 'new'
+      render 'edit'
     end
   end
 

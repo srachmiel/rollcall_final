@@ -35,7 +35,7 @@ class MeetingsController < ApplicationController
     if @meeting.save
       redirect_to meetings_url, notice: "Meeting updated successfully."
     else
-      render 'new'
+      render 'edit'
     end
   end
 

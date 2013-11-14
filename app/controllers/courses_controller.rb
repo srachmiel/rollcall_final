@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to courses_url, notice: "Course updated successfully."
     else
-      render 'new'
+      render 'edit'
     end
   end
 
