@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h1>Meeting #<%= @meeting.id %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Held on</dt>
+  <dd><%= @meeting.held_on %></dd>
+
+  <dt>Course</dt>
+
+  <% c = Course.find(@meeting.course_id) %>
+  <dd><%= c.dept %><%= c.number %> <%= c.title %></dd>
+
+</dl>
+
+<div class="page-header">
+  <h2>Students In Attendance</h2>
+</div>
+
+<ul class="list-unstyled">
+  <% meeting_attendances = Attendance.where(:meeting_id => @meeting.id) %>
+  <% meeting_attendances.each do |attendance| %>
+
+    <% s = Student.find(attendance.student_id) %>
+    <li>
+      <%= image_tag s.image_url, width: 40, class: "img-circle" %>
+      <%= s.first_name %> <%= s.last_name %></h3>
+    </li>
+
+  <% end %>
+</ul>

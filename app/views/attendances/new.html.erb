@@ -1,0 +1,42 @@
+<div class="page-header">
+  <h1>New Attendance</h1>
+</div>
+
+<%= form_tag(attendances_url, method: 'post', class: 'form-horizontal') do %>
+  <div class="form-group">
+    <%= label_tag :student_id, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <select name="student_id" class="form-control">
+        <% Student.all.each do |student| %>
+
+          <option value="<%= student.id %>">
+            <%= student.first_name %> <%= student.last_name %>
+          </option>
+
+        <% end %>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :meeting_id, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <select name="meeting_id" class="form-control">
+        <% Meeting.order(:held_on).each do |meeting| %>
+          <% c = Course.find(meeting.course_id) %>
+
+          <option value="<%= meeting.id %>">
+            <%= c.dept%><%= c.number %> <%= c.title %> <%= meeting.held_on %>
+          </option>
+
+        <% end %>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-6">
+      <%= submit_tag "Create Attendance", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

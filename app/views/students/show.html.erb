@@ -1,0 +1,15 @@
+<div class="page-header">
+  <h1>Student #<%= @student.id %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>First name</dt>
+  <dd><%= @student.first_name %></dd>
+
+  <dt>Last name</dt>
+  <dd><%= @student.last_name %></dd>
+
+  <dt>Photo</dt>
+  <dd><%= image_tag @student.image_url, width: 200, class: "img-circle" %></dd>
+
+</dl>
