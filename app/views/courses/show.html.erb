@@ -13,3 +13,13 @@
   <dd><%= @course.number %></dd>
 
 </dl>
+
+<h3>All the meetings for this section:</h3>
+
+<ul>
+
+<%= meetings = Meeting.where(:course_id => @course.id) %>
+<%= meetings.each do |meeting| %>
+	<li><%= meeting.held_on  %>%</li>
+<% end %>
+</ul>
